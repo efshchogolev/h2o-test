@@ -1,5 +1,5 @@
+@use 'variables' as *;
 @import url(fonts.scss);
-@import url(variables.scss);
 
 :root {
   font-family: 'Proxima Nova', Avenir, Helvetica, Arial, sans-serif;
@@ -15,4 +15,3 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
