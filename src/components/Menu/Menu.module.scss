@@ -2,10 +2,48 @@
 
 .menu {
   background: linear-gradient($main-turquoise, $dark-turquoise);
-  width: 200px;
+  width: 267px;
   height: 100vh;
   border-radius: 0 56px 56px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: left;
+  padding-top: 55px;
+  padding-left: 32px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  gap: 85px;
+}
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 26px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #a9e9e0bf;
+  }
 }
