@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { generateRandomTransactions } from './Faker.ts'
+import './styles/App.scss'
+import { generateRandomTransactions } from './faker.ts'
+import { Routes, Route } from 'react-router-dom'
+import Menu from './components/Menu/Menu.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
   console.log(generateRandomTransactions())
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      <Routes>
+        <Route element={<Menu />}>
+          <Route path="/" element={<div>analytics</div>} />
+          <Route path="timetable" element={<div>timetable</div>} />
+          <Route path="reports" element={<div>reports</div>} />
+          <Route path="archive" element={<div>archive</div>} />
+          <Route path="teams" element={<div>teams</div>} />
+          <Route path="money" element={<div>money</div>} />
+          <Route path="settings" element={<div>settings</div>} />
+        </Route>
+      </Routes>
+    </div>
   )
 }
 
