@@ -1,0 +1,8 @@
+@use './../../styles/variables' as *;
+
+.main {
+  background: linear-gradient($main-turquoise, $dark-turquoise);
+  height: max-content;
+  width: 100%;
+  display: flex;
+}

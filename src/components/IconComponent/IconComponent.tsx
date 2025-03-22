@@ -8,10 +8,12 @@ import Money from '../../assets/money.svg?react'
 import PieChart from '../../assets/pieChart.svg?react'
 import Gear from '../../assets/gear.svg?react'
 import { IIconProps } from '../../@types'
+import cn from 'classnames'
+import s from './IconComponent.module.scss'
 
 const IconComponent = (props: IIconProps) => {
   const iconProps = {
-    className: props.className,
+    className: cn(props.className, s.icon),
     width: props.width,
     height: props.height,
     style: props.style,
