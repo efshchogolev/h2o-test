@@ -7,11 +7,12 @@ import Team from '../../assets/team.svg?react'
 import Money from '../../assets/money.svg?react'
 import PieChart from '../../assets/pieChart.svg?react'
 import Gear from '../../assets/gear.svg?react'
-import { IIconProps } from '../../@types'
+import Arrow from '../../assets/arrow.svg?react'
+import { IconProps } from '../../@types'
 import cn from 'classnames'
 import s from './IconComponent.module.scss'
 
-const IconComponent = (props: IIconProps) => {
+const IconComponent = (props: IconProps) => {
   const iconProps = {
     className: cn(props.className, s.icon),
     width: props.width,
@@ -43,6 +44,9 @@ const IconComponent = (props: IIconProps) => {
     }
     case 'gear': {
       return <Gear {...iconProps} />
+    }
+    case 'arrow': {
+      return <Arrow {...iconProps} />
     }
     default:
       return null

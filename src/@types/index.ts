@@ -7,11 +7,17 @@ export type IconName =
   | 'money'
   | 'pieChart'
   | 'gear'
+  | 'arrow'
 
-export interface IIconProps {
+export type IconProps = {
   width: number
   height: number
   iconName: IconName
   style?: React.CSSProperties
   className?: string
+}
+
+export type CircleNavigateButtonProps = {
+  right?: boolean
+  disabled?: boolean
 }
