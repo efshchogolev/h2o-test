@@ -4,10 +4,21 @@
   width: 100%;
   padding: 49px 38px 49px 40px;
   background-color: $main-white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
 }
 
 .buttonsContainer {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: calc(100% - 361px - 80px);
 }

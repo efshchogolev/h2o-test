@@ -1,0 +1,45 @@
+@use './../../styles/variables' as *;
+
+.profileButton {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  width: 361px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 56px;
+  width: 56px;
+  margin-right: 23px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.44px;
+  color: $main-black;
+  text-align: left;
+}
+
+.role {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.15px;
+  color: $main-gray;
+  text-align: left;
+}
+
+.dropdownIcon {
+  margin-left: auto;
+}

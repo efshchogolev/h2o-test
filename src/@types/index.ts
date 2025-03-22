@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react'
+
 export type IconName =
   | 'logo'
   | 'calendar'
@@ -8,12 +10,13 @@ export type IconName =
   | 'pieChart'
   | 'gear'
   | 'arrow'
+  | 'dropdownArrow'
 
 export type IconProps = {
   width: number
   height: number
   iconName: IconName
-  style?: React.CSSProperties
+  style?: CSSProperties
   className?: string
 }
 

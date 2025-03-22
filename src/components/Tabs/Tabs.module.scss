@@ -1,0 +1,43 @@
+@use './../../styles/variables' as *;
+
+.group {
+  overflow: hidden;
+  max-width: calc(100% - 168px);
+}
+
+.list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 39px;
+  border-bottom: 1.5px solid $shadow-gray;
+}
+
+.tab {
+  color: $shadow-gray;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.44px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  text-wrap: nowrap;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+
+  &[data-selected] {
+    color: $main-black;
+    &::after {
+      content: '';
+      position: absolute;
+      transform: translateY(3px);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4.5px;
+      background-color: $main-turquoise;
+      border-radius: 2px;
+    }
+  }
+}

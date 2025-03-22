@@ -8,6 +8,7 @@ import Money from '../../assets/money.svg?react'
 import PieChart from '../../assets/pieChart.svg?react'
 import Gear from '../../assets/gear.svg?react'
 import Arrow from '../../assets/arrow.svg?react'
+import DropdownArrow from '../../assets/dropdownarrow.svg?react'
 import { IconProps } from '../../@types'
 import cn from 'classnames'
 import s from './IconComponent.module.scss'
@@ -47,6 +48,9 @@ const IconComponent = (props: IconProps) => {
     }
     case 'arrow': {
       return <Arrow {...iconProps} />
+    }
+    case 'dropdownArrow': {
+      return <DropdownArrow {...iconProps} />
     }
     default:
       return null
