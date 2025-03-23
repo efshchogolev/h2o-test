@@ -11,7 +11,7 @@ const CircleNavigateButton = (props: CircleNavigateButtonProps) => {
       className={cn(s.button, right && s.button_right)}
       disabled={disabled}
     >
-      <IconComponent width={9} height={20} iconName={'arrow'} />
+      <IconComponent width={9} height={20} iconName={'buttonArrow'} />
     </button>
   )
 }

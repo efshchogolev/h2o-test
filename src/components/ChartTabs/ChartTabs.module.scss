@@ -1,0 +1,100 @@
+@use './../../styles/mixins';
+@use './../../styles/variables' as *;
+
+.tabList {
+  display: flex;
+  align-items: center;
+  gap: 39px;
+  height: 168px;
+}
+
+.tab {
+  @include mixins.card;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  min-width: 264px;
+  height: 100%;
+  padding: 32px;
+  align-items: center;
+  cursor: pointer;
+
+  &_active {
+    color: $main-white;
+    background-color: $main-turquoise;
+  }
+
+  outline: none;
+}
+
+.percentage {
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 13px;
+  width: 144px;
+
+  &_good {
+    color: $main-turquoise;
+    background-color: rgba($main-turquoise, 0.15);
+
+    & * {
+      fill: $main-turquoise;
+    }
+  }
+
+  &_bad {
+    color: $main-red;
+    background-color: rgba($main-red, 0.15);
+
+    & * {
+      fill: $main-red;
+    }
+  }
+
+  &_active {
+    color: $main-white;
+    background-color: rgba($background-gray, 0.25);
+
+    & * {
+      fill: $main-white;
+    }
+  }
+}
+
+.percentageText {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 36px;
+  letter-spacing: -0.56px;
+}
+
+.amount {
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 44px;
+  letter-spacing: -0.56px;
+  color: $main-black;
+
+  &_active {
+    color: $main-white;
+  }
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.56px;
+  color: $main-black;
+
+  &_active {
+    color: $main-white;
+  }
+}
+
+.arrowBad {
+  transform: rotate(180deg);
+}

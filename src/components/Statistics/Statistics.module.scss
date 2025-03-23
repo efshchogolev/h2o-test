@@ -1,0 +1,8 @@
+@use './../../styles/mixins';
+@use './../../styles/variables' as *;
+
+.statistics {
+  display: flex;
+  flex-direction: column;
+}
+

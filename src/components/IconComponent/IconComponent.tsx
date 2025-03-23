@@ -7,9 +7,10 @@ import Team from '../../assets/team.svg?react'
 import Money from '../../assets/money.svg?react'
 import PieChart from '../../assets/pieChart.svg?react'
 import Gear from '../../assets/gear.svg?react'
-import Arrow from '../../assets/arrow.svg?react'
+import ButtonArrow from '../../assets/buttonArrow.svg?react'
 import DropdownArrow from '../../assets/dropdownarrow.svg?react'
 import ExclamationMark from '../../assets/exclamation.svg?react'
+import Arrow from '../../assets/arrow.svg?react'
 import { IconProps } from '../../@types'
 import cn from 'classnames'
 import s from './IconComponent.module.scss'
@@ -47,14 +48,17 @@ const IconComponent = (props: IconProps) => {
     case 'gear': {
       return <Gear {...iconProps} />
     }
-    case 'arrow': {
-      return <Arrow {...iconProps} />
+    case 'buttonArrow': {
+      return <ButtonArrow {...iconProps} />
     }
     case 'dropdownArrow': {
       return <DropdownArrow {...iconProps} />
     }
     case 'exclamationMark': {
       return <ExclamationMark {...iconProps} />
+    }
+    case 'arrow': {
+      return <Arrow {...iconProps} />
     }
     default:
       return null

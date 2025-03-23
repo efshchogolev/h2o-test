@@ -9,9 +9,10 @@ export type IconName =
   | 'money'
   | 'pieChart'
   | 'gear'
-  | 'arrow'
+  | 'buttonArrow'
   | 'dropdownArrow'
   | 'exclamationMark'
+  | 'arrow'
 
 export type IconProps = {
   width: number
@@ -39,5 +40,16 @@ export type ProblemItemProps = {
 export type ExclamationCircleProps = {
   color: 'yellow' | 'green' | 'red' | 'purple' | 'darkBlue' | 'blue'
   markHidden?: boolean
+  className?: string
+}
+
+export type ChartTabsProps = {
+  // isBad?: boolean
+  // percentage: number
+  // name: string
+  // amount: number
+}
+
+export type StatisticsProps = {
   className?: string
 }
