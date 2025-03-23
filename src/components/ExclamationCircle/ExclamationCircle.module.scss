@@ -1,0 +1,35 @@
+@use './../../styles/variables' as *;
+
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_yellow {
+    background-color: $main-yellow;
+  }
+
+  &_red {
+    background-color: $main-red;
+  }
+
+  &_purple {
+    background-color: $main-purple;
+  }
+
+  &_darkBlue {
+    background-color: $dark-blue;
+  }
+
+  &_blue{
+    background-color: $main-blue;
+  }
+
+  &_green {
+    background-color: $main-green;
+  }
+}

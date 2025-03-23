@@ -3,3 +3,8 @@
 @mixin shadow() {
   box-shadow: 0 4px 18px rgba($shadow-gray, 0.5);
 }
+
+@mixin card() {
+  background-color: $main-white;
+  border-radius: 32px;
+}

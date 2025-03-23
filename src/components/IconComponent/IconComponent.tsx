@@ -9,6 +9,7 @@ import PieChart from '../../assets/pieChart.svg?react'
 import Gear from '../../assets/gear.svg?react'
 import Arrow from '../../assets/arrow.svg?react'
 import DropdownArrow from '../../assets/dropdownarrow.svg?react'
+import ExclamationMark from '../../assets/exclamation.svg?react'
 import { IconProps } from '../../@types'
 import cn from 'classnames'
 import s from './IconComponent.module.scss'
@@ -51,6 +52,9 @@ const IconComponent = (props: IconProps) => {
     }
     case 'dropdownArrow': {
       return <DropdownArrow {...iconProps} />
+    }
+    case 'exclamationMark': {
+      return <ExclamationMark {...iconProps} />
     }
     default:
       return null

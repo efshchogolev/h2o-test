@@ -11,6 +11,7 @@ export type IconName =
   | 'gear'
   | 'arrow'
   | 'dropdownArrow'
+  | 'exclamationMark'
 
 export type IconProps = {
   width: number
@@ -23,4 +24,20 @@ export type IconProps = {
 export type CircleNavigateButtonProps = {
   right?: boolean
   disabled?: boolean
+}
+
+export type ProblemsProps = {
+  className?: string
+}
+
+export type ProblemItemProps = {
+  name: string
+  amount: number
+  important?: boolean
+}
+
+export type ExclamationCircleProps = {
+  color: 'yellow' | 'green' | 'red' | 'purple' | 'darkBlue' | 'blue'
+  markHidden?: boolean
+  className?: string
 }
