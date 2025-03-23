@@ -1,4 +1,11 @@
 @font-face {
+  src: url(../fonts/proximanova_extrabold.woff);
+  font-family: 'Proxima Nova';
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
   src: url(../fonts/proximanova_bold.woff);
   font-family: 'Proxima Nova';
   font-weight: 700;

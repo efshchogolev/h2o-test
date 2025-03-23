@@ -1,0 +1,20 @@
+@use './../../styles/variables' as *;
+
+.analytics {
+  height: 100%;
+  width: 100%;
+  background-color: $background-gray;
+  border-radius: 64px 64px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 40px;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 44px;
+  letter-spacing: -0.56px;
+  align-self: flex-start;
+}
