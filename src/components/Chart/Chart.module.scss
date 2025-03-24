@@ -126,44 +126,10 @@
   transform: rotate(180deg);
 }
 
-.legend {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  justify-content: space-between;
-  margin-top: 19px;
-  margin-bottom: 0;
-}
+
 
 .tick {
   font-size: 14px;
   font-weight: 600;
 }
 
-.tooltip {
-  background-color: $main-white;
-  border-radius: 6px;
-  padding: 7px 7px 7px 7px;
-  //margin: 0;
-  font-size: 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style: disc inside;
-  box-sizing: border-box;
-  border: 1px solid $shadow-gray;
-}
-
-.tooltipContainer {
-  box-sizing: border-box;
-
-  &::marker {
-    color: var(--marker-color);
-  }
-}
-
-.tooltipText {
-  font-weight: 700;
-  font-size: 14px;
-}

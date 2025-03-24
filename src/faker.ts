@@ -38,4 +38,12 @@ const generateRandomProblems = (count: number): Expense[] => {
   }))
 }
 
-export { generateRandomTransactions, generateRandomProblems }
+const getRandomPercentage = () => {
+  return faker.number.int({ min: -100, max: 100 })
+}
+
+export {
+  generateRandomTransactions,
+  generateRandomProblems,
+  getRandomPercentage,
+}

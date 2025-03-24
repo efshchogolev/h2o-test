@@ -1,0 +1,27 @@
+@use './../../styles/variables' as *;
+
+.tooltip {
+  background-color: $main-white;
+  border-radius: 6px;
+  padding: 7px 7px 7px 7px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: disc inside;
+  box-sizing: border-box;
+  border: 1px solid $shadow-gray;
+}
+
+.tooltipContainer {
+  box-sizing: border-box;
+
+  &::marker {
+    color: var(--marker-color);
+  }
+}
+
+.tooltipText {
+  font-weight: 700;
+  font-size: 14px;
+}

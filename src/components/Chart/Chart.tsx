@@ -6,199 +6,33 @@ import getNormalizedAmount from '../../helpers/getNormalizedAmount.ts'
 import {
   CartesianGrid,
   Legend,
-  LegendProps,
   Line,
   LineChart,
   ResponsiveContainer,
   Tooltip,
-  TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts'
-import { generateRandomTransactions } from '../../faker.ts'
-import {
-  DivisionType,
-  SimpleTab,
-  Transaction,
-  TransactionType,
-  TransformedTransaction,
-} from '../../@types'
-import AmountItem from '../ProblemItem/AmountItem.tsx'
+import { generateRandomTransactions, getRandomPercentage } from '../../faker.ts'
 import Tabs from '../Tabs/Tabs.tsx'
+import { PERIOD_TABS } from '../../constants.ts'
 import {
-  NameType,
-  ValueType,
-} from 'recharts/types/component/DefaultTooltipContent'
-import { CSSProperties } from 'react'
-import { faker } from '@faker-js/faker'
-
-const TRANSLATIONS = {
-  revenue: 'Выручка',
-  expanses: 'Затраты',
-  income: 'Прибыль',
-  debt: 'Задолженность',
-  total: 'Итог',
-}
-
-const getRandomPercentage = () => {
-  return faker.number.int({ min: -100, max: 100 })
-}
-
-const CustomLegend = (
-  props: LegendProps & {
-    data: TransformedTransaction[] | Omit<TransformedTransaction, 'division'>[]
-  },
-) => {
-  const { payload, data } = props
-  return (
-    <ul className={s.legend}>
-      {payload?.map((entry) => {
-        if (entry.dataKey && entry.color) {
-          const key = entry.dataKey as keyof typeof TRANSLATIONS
-          return (
-            <AmountItem
-              key={key}
-              name={TRANSLATIONS[key]}
-              amount={getSpecificTypeAmount(data, key)}
-              color={entry.color}
-            />
-          )
-        }
-      })}
-    </ul>
-  )
-}
-
-const CustomChartTooltip = ({
-  active,
-  payload,
-}: TooltipProps<ValueType, NameType>) => {
-  if (active && payload) {
-    console.log(payload)
-    return (
-      <ul className={s.tooltip}>
-        {payload.map((line) => {
-          const key = line.dataKey as keyof typeof TRANSLATIONS
-          return (
-            <li
-              className={s.tooltipContainer}
-              style={{ '--marker-color': line.color } as CSSProperties}
-            >
-              <span className={s.tooltipText}>
-                {TRANSLATIONS[key]}: {line.value}
-              </span>
-            </li>
-          )
-        })}
-      </ul>
-    )
-  }
-
-  return null
-}
+  getFullAmount,
+  getSpecificDivisionData,
+  mergeDivisions,
+  transformTransactions,
+} from '../../helpers/chartHelpers.ts'
+import CustomLegend from '../CustomLegend/CustomLegend.tsx'
+import CustomChartTooltip from '../CustomChartTooltip/CustomChartTooltip.tsx'
 
 const data = generateRandomTransactions()
-
-const getSpecificDivisionData = (
-  data: TransformedTransaction[],
-  division: DivisionType,
-) => {
-  return data.filter((el) => el.division === division)
-}
-
-const getSpecificTypeAmount = (
-  data: TransformedTransaction[] | Omit<TransformedTransaction, 'division'>[],
-  type: TransactionType | 'total',
-) => {
-  return data.reduce((acc, el) => acc + el[type], 0)
-}
-
-const getFullAmount = (data: TransformedTransaction[]) =>
-  data.reduce((acc, el) => acc + el.total, 0)
-
-const transformTransactions = (
-  data: Transaction[],
-): TransformedTransaction[] => {
-  const resultMap = new Map<string, TransformedTransaction>()
-
-  data.forEach(({ division, date, amount, type }) => {
-    const month = date.slice(0, 7)
-    const key = `${division}-${month}`
-
-    if (!resultMap.has(key)) {
-      resultMap.set(key, {
-        division,
-        month,
-        expanses: 0,
-        income: 0,
-        revenue: 0,
-        debt: 0,
-        total: 0,
-      })
-    }
-
-    const entry = resultMap.get(key)!
-    const amountNumber = Number(amount)
-    entry[type] += amountNumber
-    entry.total += amountNumber
-  })
-
-  return Array.from(resultMap.values()).sort((a, b) =>
-    a.month.localeCompare(b.month),
-  )
-}
-
-const mergeDivisions = (
-  transactions: TransformedTransaction[],
-): Omit<TransformedTransaction, 'division'>[] => {
-  const resultMap = new Map<string, Omit<TransformedTransaction, 'division'>>()
-
-  transactions.forEach(({ month, expanses, income, revenue, debt, total }) => {
-    if (!resultMap.has(month)) {
-      resultMap.set(month, {
-        month,
-        expanses: 0,
-        income: 0,
-        revenue: 0,
-        debt: 0,
-        total: 0,
-      })
-    }
-
-    const entry = resultMap.get(month)!
-    entry.expanses += expanses
-    entry.income += income
-    entry.revenue += revenue
-    entry.debt += debt
-    entry.total += total
-  })
-
-  return Array.from(resultMap.values()).sort((a, b) =>
-    a.month.localeCompare(b.month),
-  )
-}
 const transformedData = transformTransactions(data)
 
 const mergedData = mergeDivisions(transformTransactions(data))
 const b2cData = getSpecificDivisionData(transformedData, 'B2C')
 const b2bData = getSpecificDivisionData(transformedData, 'B2B')
 
-const PERIOD_TABS: SimpleTab[] = [
-  {
-    name: 'week',
-    label: 'Неделя',
-  },
-  {
-    name: 'month',
-    label: 'Месяц',
-  },
-  {
-    name: 'year',
-    label: 'Год',
-  },
-]
-
-const TABS = [
+const tabs = [
   {
     name: 'results',
     label: 'Итоги',
@@ -226,7 +60,7 @@ const Chart = () => {
   return (
     <TabGroup className={s.tabs}>
       <TabList className={s.tabList}>
-        {TABS.map((tab) => (
+        {tabs.map((tab) => (
           <Tab
             key={`${tab.name}-tab`}
             className={({ selected }) => cn(s.tab, selected && s.tab_active)}
@@ -266,7 +100,7 @@ const Chart = () => {
           <h2>Общая статистика</h2>
           <Tabs tabs={PERIOD_TABS} withoutBottomBorder />
         </header>
-        {TABS.map((tab) => (
+        {tabs.map((tab) => (
           <TabPanel className={s.tabPanel} key={tab.name}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
