@@ -1,12 +1,10 @@
 import './styles/App.scss'
-import { generateRandomTransactions } from './faker.ts'
 import { Routes, Route } from 'react-router-dom'
 import Main from './components/Main/Main.tsx'
 import Cabinet from './components/Cabinet/Cabinet.tsx'
 import Analytics from './components/Analytics/Analytics.tsx'
 
 function App() {
-  console.log(generateRandomTransactions())
   return (
     <div className="app">
       <Routes>

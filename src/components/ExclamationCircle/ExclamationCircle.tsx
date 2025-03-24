@@ -7,7 +7,7 @@ const ExclamationCircle = (props: ExclamationCircleProps) => {
   const { markHidden, color, className } = props
 
   return (
-    <div className={cn(s.circle, s[`circle_${color}`], className)}>
+    <div className={cn(s.circle, className)} style={{ backgroundColor: color }}>
       {!markHidden && (
         <IconComponent width={4} height={11} iconName={'exclamationMark'} />
       )}

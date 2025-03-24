@@ -35,21 +35,51 @@ export type ProblemItemProps = {
   name: string
   amount: number
   important?: boolean
+  color: string
 }
 
 export type ExclamationCircleProps = {
-  color: 'yellow' | 'green' | 'red' | 'purple' | 'darkBlue' | 'blue'
+  color: string
   markHidden?: boolean
   className?: string
 }
 
-export type ChartTabsProps = {
-  // isBad?: boolean
-  // percentage: number
-  // name: string
-  // amount: number
-}
-
 export type StatisticsProps = {
   className?: string
+}
+
+export type TransactionType = 'expanses' | 'income' | 'revenue' | 'debt'
+export type DivisionType = 'B2B' | 'B2C'
+
+export interface Transaction {
+  division: DivisionType
+  date: string
+  amount: number
+  type: TransactionType
+}
+
+export type TransformedTransaction = {
+  division: DivisionType
+  month: string
+  expanses: number
+  income: number
+  revenue: number
+  debt: number
+  total: number
+}
+
+export type Expense = {
+  id: number
+  category: string
+  amount: number
+}
+
+export type SimpleTab = {
+  name: string
+  label: string
+}
+
+export type TabsProps = {
+  tabs: SimpleTab[]
+  withoutBottomBorder?: boolean
 }

@@ -1,14 +1,14 @@
-import s from './ProblemItem.module.scss'
+import s from './AmountItem.module.scss'
 import { ProblemItemProps } from '../../@types'
 import ExclamationCircle from '../ExclamationCircle/ExclamationCircle.tsx'
 import getNormalizedAmount from '../../helpers/getNormalizedAmount.ts'
 
-const ProblemItem = (props: ProblemItemProps) => {
-  const { name, amount, important } = props
+const AmountItem = (props: ProblemItemProps) => {
+  const { name, amount, color } = props
 
   return (
     <li className={s.problemItem}>
-      <ExclamationCircle color={important ? 'red' : 'yellow'} />
+      <ExclamationCircle color={color} />
       <div className={s.textContainer}>
         <span className={s.name}>{name}</span>
         <span className={s.amount}>{`₽ ${getNormalizedAmount(amount)}`}</span>
@@ -17,4 +17,4 @@ const ProblemItem = (props: ProblemItemProps) => {
   )
 }
 
-export default ProblemItem
+export default AmountItem

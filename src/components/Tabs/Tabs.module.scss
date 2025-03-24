@@ -10,6 +10,10 @@
   flex-wrap: nowrap;
   gap: 39px;
   border-bottom: 1.5px solid $shadow-gray;
+
+  &_withoutBorder {
+    border-bottom: none;
+  }
 }
 
 .tab {
