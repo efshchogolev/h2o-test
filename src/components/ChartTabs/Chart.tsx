@@ -11,6 +11,7 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis,
 } from 'recharts'
@@ -24,6 +25,12 @@ import {
 } from '../../@types'
 import AmountItem from '../ProblemItem/AmountItem.tsx'
 import Tabs from '../Tabs/Tabs.tsx'
+import {
+  NameType,
+  ValueType,
+} from 'recharts/types/component/DefaultTooltipContent'
+import { CSSProperties } from 'react'
+import { faker } from '@faker-js/faker'
 
 const TRANSLATIONS = {
   revenue: 'Выручка',
@@ -33,13 +40,16 @@ const TRANSLATIONS = {
   total: 'Итог',
 }
 
+const getRandomPercentage = () => {
+  return faker.number.int({ min: -100, max: 100 })
+}
+
 const CustomLegend = (
   props: LegendProps & {
     data: TransformedTransaction[] | Omit<TransformedTransaction, 'division'>[]
   },
 ) => {
   const { payload, data } = props
-  console.log(props)
   return (
     <ul className={s.legend}>
       {payload?.map((entry) => {
@@ -57,6 +67,34 @@ const CustomLegend = (
       })}
     </ul>
   )
+}
+
+const CustomChartTooltip = ({
+  active,
+  payload,
+}: TooltipProps<ValueType, NameType>) => {
+  if (active && payload) {
+    console.log(payload)
+    return (
+      <ul className={s.tooltip}>
+        {payload.map((line) => {
+          const key = line.dataKey as keyof typeof TRANSLATIONS
+          return (
+            <li
+              className={s.tooltipContainer}
+              style={{ '--marker-color': line.color } as CSSProperties}
+            >
+              <span className={s.tooltipText}>
+                {TRANSLATIONS[key]}: {line.value}
+              </span>
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+
+  return null
 }
 
 const data = generateRandomTransactions()
@@ -145,8 +183,6 @@ const mergedData = mergeDivisions(transformTransactions(data))
 const b2cData = getSpecificDivisionData(transformedData, 'B2C')
 const b2bData = getSpecificDivisionData(transformedData, 'B2B')
 
-console.log(mergeDivisions(transformTransactions(data)))
-
 const PERIOD_TABS: SimpleTab[] = [
   {
     name: 'week',
@@ -167,21 +203,21 @@ const TABS = [
     name: 'results',
     label: 'Итоги',
     amount: getFullAmount(transformedData),
-    percentage: 10,
+    percentage: getRandomPercentage(),
     data: mergedData,
   },
   {
     name: 'b2b',
     label: 'B2B',
     amount: getFullAmount(getSpecificDivisionData(transformedData, 'B2B')),
-    percentage: 10,
+    percentage: getRandomPercentage(),
     data: b2bData,
   },
   {
     name: 'b2c',
     label: 'B2C',
     amount: getFullAmount(getSpecificDivisionData(transformedData, 'B2C')),
-    percentage: -10,
+    percentage: getRandomPercentage(),
     data: b2cData,
   },
 ]
@@ -247,7 +283,7 @@ const Chart = () => {
                 <XAxis
                   dataKey="month"
                   tickLine={false}
-                  stroke="#B7B7B7"
+                  stroke="#989fa3"
                   className={s.tick}
                   tickFormatter={(date) => {
                     return new Date(date).toLocaleString('default', {
@@ -256,12 +292,12 @@ const Chart = () => {
                   }}
                 />
                 <YAxis
-                  stroke="#B7B7B7"
+                  stroke="#989fa3"
                   axisLine={false}
                   tickLine={false}
                   width={3}
                 />
-                <Tooltip />
+                <Tooltip content={<CustomChartTooltip />} />
                 <Line
                   type="monotone"
                   dataKey="total"

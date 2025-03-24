@@ -2,11 +2,11 @@
 @import './normalize.css';
 
 #root {
-  max-width: 1280px;
+  box-sizing: border-box;
 }
 
 .app {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
