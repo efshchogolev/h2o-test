@@ -1,54 +1,35 @@
-# React + TypeScript + Vite
+# Test task for H2O (H2O Test)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+***Deadline: 4 days***
 
-Currently, two official plugins are available:
+***Task:***
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Create a web page layout based on a Figma design.
+![Design](./layout.png)
 
-## Expanding the ESLint configuration
+Main Requirements:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Random Data Generation:
+  Generate random dataset in JSON format. Example:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
+```
+"data": [
+    {
+        "division": "B2B",
+        "date": "2023-09-25T05:00:00.000+00:00",
+        "amount": "20000",
+        "type": "expenses"
     },
-  },
-})
+    {
+        "division": "B2C",
+        "date": "2023-09-24T05:00:00.000+00:00",
+        "amount": "14000",
+        "type": "income"
+    }
+]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Chart
+- Navigation & Styling
+- Problem areas
+- Animations
